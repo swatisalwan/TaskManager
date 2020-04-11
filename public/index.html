@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tasks And Notes Manager</title>
+    <link rel="stylesheet" type="text/css"href="style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+  <h1 class="font-weight-bold font-italic text-center">Manage Your Tasks <span class= "badge badge-secondary ">Add Notes</span></h1>
+
+  <div class="container" id="outer">
+   
+    <form class="jumbotron font-italic font-weight-bold ">
+        <!--New Task-->
+        <div class="form-group row">
+          <label for="newTask" class="col-sm-2 col-form-label">New Task</label>
+          <div class="col-sm-4">
+            <input type="text" class="form-control" id="newTask">
+          </div>
+        </div>
+
+         <!--Description of New Task-->
+         <div class="form-group row">
+            <label for="descTask" class="col-sm-2 col-form-label">Description of the Task</label>
+            <div class="col-sm-4">
+            <textarea class="form-control" id="descTask" rows="3"></textarea>
+            </div>
+         </div>
+
+         <!--Duration of New Task-->
+         <div class="form-group row">
+            <label for="dueDate" class="col-sm-2 col-form-label">Due Date of Task</label>
+            <div class="col-sm-4">
+              <input type="date" class="form-control" id="dueDate">
+            </div>
+          </div>
+
+
+        <!--Priority of New Task-->
+        <fieldset class="form-group">
+          <div class="row">
+            <legend class="col-form-label col-sm-2 pt-0">Priority of the Task</legend>
+            <div class="col-sm-4">
+            
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="gridRadios" id="highRadios" value="option1" checked>
+                <label class="form-check-label" for="highRadios">
+                  High
+                </label>
+              </div>
+
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="gridRadios" id="mediumRadios" value="option2">
+                <label class="form-check-label" for="mediumRadios">
+                  Medium
+                </label>
+              </div>
+
+              <div class="form-check disabled">
+                <input class="form-check-input" type="radio" name="gridRadios" id="lowRadios" value="option3" >
+                <label class="form-check-label" for="lowRadios">
+                  Low
+                </label>
+              </div>
+
+            </div>
+          </div>
+        
+        </fieldset>
+
+        <!--Status of New Task-->
+        
+        <div class="form-group row">
+            <div class="col-sm-2">Status of the Task</div>
+            <div class="col-sm-10">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="gridCheck1" disabled>
+                <label class="form-check-label" for="gridCheck1">
+                   Complete
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="defaultCheck2" checked>
+                <label class="form-check-label" for="defaultCheck2">
+                  Incomplete
+                </label>
+              </div>
+
+              <div class="form-group row">
+                <div class="col-sm-6">
+                  <button type="submit" class="btn btn-primary">Add Task</button>
+                </div>
+
+            </div>
+          </div>
+  </div>
+          
+<div class="container" id="second">
+
+  <ul class="list-group">
+    <li class="list-group-item">Cras justo odio</li>
+    <li class="list-group-item">Dapibus ac facilisis in</li>
+    <li class="list-group-item">Morbi leo risus</li>
+    <li class="list-group-item">Porta ac consectetur ac</li>
+    <li class="list-group-item">Vestibulum at eros</li>
+  </ul>
+  
+</div>
+
+    
+    
+</body>
+</html>

@@ -2,7 +2,7 @@ const Sequelize = require('sequelize')
 
 const db= new Sequelize({
     dialect:'sqlite',
-    storage:__dirname +'/database.db',
+    storage:__dirname +'/test.db',
     pool:{
         min:0,
         max:5
@@ -12,7 +12,7 @@ const db= new Sequelize({
 const Task= db.define('tasks',{
     task:{
         type:Sequelize.STRING,
-        allowNull:false
+       
     },
     description:{
         type:Sequelize.STRING
@@ -23,11 +23,16 @@ const Task= db.define('tasks',{
     },
     priority:{
         type:Sequelize.STRING,
-        defaultValue:'high'
+        
     },
     status:{
         type:Sequelize.STRING,
-        defaultValue:'incomplete'
+      
+    },
+
+    notes:{
+        type:Sequelize.TEXT
+
     }
 
 })

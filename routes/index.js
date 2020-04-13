@@ -5,7 +5,7 @@ route.get('/todos', function(req,res,next)
 {
     Task.findAll()
     .then((tasks)=>{
-        res.status(200).send(users)
+        res.status(200).send(tasks)
 
     })
     .catch((err)=>{
@@ -19,7 +19,14 @@ route.get('/todos', function(req,res,next)
 
 route.post('/todos', function(req,res,next)
 {
-    Task.findAll()
+    Task.create({
+        task:req.body.task,
+        description:req.body.description,
+        date:req.body.date,
+        priority:req.body.priority,
+        status:req.body.status
+
+    })
     .then((tasks)=>{
         res.status(200).send(tasks)
 

@@ -5,7 +5,29 @@ function fetchTasks(done)
     })
 }
 
-function showNewTask (tasks){
+function fetchTaskById(id,done)
+{
+
+    $.get('/todos/:id',function(data){
+        done(data)
+    })
+}
+
+function addTask(task,description,date,priority,status)
+{
+  $.post('/todos',{
+    task:task,
+    description:description,
+    date:date,
+    priority:priority,
+    status:status
+
+  },function(data){
+    done(data)
+})
+}
+
+function showNewTask (task){
     return $(`
     <div class ="col-4 card mx-2 p-4">
     <b> ${task.task}</b>
@@ -18,7 +40,7 @@ function showNewTask (tasks){
     </div>
     
     <div class="row">
-      Prioriy :   ${task.priority}
+      Priority :   ${task.priority}
     </div>
    
    <div class="row">
@@ -32,3 +54,33 @@ function showNewTask (tasks){
 
 }
 
+
+function sortByPriority(fetchedData)
+{
+    let taskList=$('#taskList')
+    fetchedData.sort(function(a,b)
+    {
+
+        apriority=a.priority.toLowerCase()
+        bpriority=b.priority.toLowerCase()
+        return ((apriority=='high') ? -1 : 1 );
+       
+    })
+    for(task of fetchedData)
+    {
+          taskList.append(showNewTask(task))
+    }
+    
+   
+} 
+
+function sortById(fetchedData)
+{
+    let taskList=$('#taskList')
+    taskList.empty()
+    for(task of fetchedData)
+    {
+       taskList.append(showNewTask(task))
+    }
+    
+}

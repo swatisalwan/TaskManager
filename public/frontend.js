@@ -16,49 +16,48 @@ $(function(){
             sortById(fetchedData)
         })
         
-    
+     
     
     $('#sortByPriority').click(function()
     {
-        fetchTasks(function(tasks){
-        
-            taskList.empty()
-            fetchedData=tasks;
             sortByPriority(fetchedData)
-        })
-        
-    }) 
-    
+    })
 
-   
+    $('#sortByStatus').click(function()
+    {
+            sortByStatus(fetchedData)
+    })
+
+    $('#sortBydateL').click(function()
+    {
+            sortByNewer(fetchedData)
+    })
+    $('#sortBydateO').click(function()
+    {
+            sortByOlder(fetchedData)
+    })
+     
     $('#addBtn').click(function()
     {
-        
-        addTask(newTask.val(),description.val(),date.val(),status.val(),priority.val())
+      
+        addTask(newTask.val(),description.val(),date.val(),priority.val(),status.val())
 
     }) 
 
 
     $('#searchId').click(function()
     {
-        
-        fetchTaskById($("#search"),function(tasks)
+        let id=$("#search")
+       let taskList=$('#taskList')
+        fetchTaskById(id.val(),function(task)
         {   
             taskList.empty()
-            for(task of fetchedData)
-            {
-                 taskList.append(showNewTask(task))
-         }
+            taskList.append(showNewTask(task))
+           
         })
 
-    }) 
-    
+    })
 
 
-    
-});
-
-
-
-  
+}) 
 

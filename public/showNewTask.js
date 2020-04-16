@@ -14,6 +14,14 @@ function fetchTaskById(id,done)
     })
 }
 
+function fetchNotesById(id,done)
+{
+
+    $.get("/todos/notes"+id,function(data){
+        done(data)
+    })
+}
+
 function addTask(task,description,date,priority,status)
 {
   $.post('/todos',{
@@ -31,13 +39,12 @@ function addTask(task,description,date,priority,status)
 function showNewTask (task){
   let taskList=$('#taskList')
     return $(`
-    <div class ="col-4 card mx-2 p-4">
+    <div class ="col-4 card mx-2 p-4" style="background-color: lavender;">
     <b> ${task.task}</b>
     
     <div class="row">
         Description : ${task.description}
     </div>
-
     <div class="row">
     Due Date :   ${task.date}
     </div>
@@ -45,20 +52,26 @@ function showNewTask (task){
     <div class="row">
     Priority :   ${task.priority}
     </div>
-
     <div class="row">
        Status :   ${task.status}
     </div>
     
-    <button class="col btn btn-primary collapsible m-3">Show Notes</button>
-    <div class="content">
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-    </div>
+    <button class="wow btn-primary">Show Notes</button>
+    <div class="display">
+    <form>
+    <b>Notes: </b>
+    <p >${task.id}</p>
+    <p>${task.notes}</p>
+   
+   
+        Add Notes: <input class="enterNote" type="text" >
+       <button  type="submit"  class="updateNotes">Submit</button>
+   </form>
+  
+</div>
    
   
   </div>`
   )
 
 }
-
-

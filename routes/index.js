@@ -41,9 +41,6 @@ route.post('/todos', function(req,res,next)
 })
 
 
-
-
-
 route.get('/todos/:id', (req, res) => {
     if (isNaN(Number(req.params.id))) {
 
@@ -68,8 +65,37 @@ route.get('/todos/:id', (req, res) => {
   
 })
 
+
+route.get('/todos/:id/notes', function (req, res) {
+    Task.findAll({
+     where: {
+         id: req.params.id 
+     },
+     attributes: ['notes'], 
+ }).then(function (list) {
+     res.status(200).json(list);
+ })
+    })
+
+    route.patch('/todos/:id/notes', function (req, res, next) {
+        Task.update(
+          {  notes: req.body.notes,
+        },
+    
+          {where: {id: req.params.id}}
+        )
+        .then(function(rowsUpdated) {
+          res.json(rowsUpdated)
+        })
+        .catch(next)
+       })
+    
+
+
+
+
 route.patch('/todos/:id', function (req, res, next) {
-    Tasks.update(
+    Task.update(
       {  date: req.body.date,
         status: req.body.status,
         priority: req.body.priority},
@@ -82,30 +108,9 @@ route.patch('/todos/:id', function (req, res, next) {
     .catch(next)
    })
 
-route.get('todos/:id/notes', function (req, res) {
-   Tasks.findAll({
-    where: {
-        id: req.params.id //array
-    },
-    attributes: ['notes'], //object
-}).then(function (list) {
-    res.status(200).json(list);
-})
-   })
 
-   route.patch('/:id/notes', function (req, res, next) {
-    Tasks.update(
-      {  Notes: req.body.notes,
-    },
 
-      {where: {id: req.params.id}}
-    )
-    .then(function(rowsUpdated) {
-      res.json(rowsUpdated)
-    })
-    .catch(next)
-   })
-
+   
 
 
 

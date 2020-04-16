@@ -11,26 +11,28 @@ $(function(){
     var fetchedData
     
         fetchTasks(function(tasks){
-        
-            taskList.empty()
             fetchedData=tasks;
+            taskList.empty()
             sortById(fetchedData)
         })
         
      
-    
+        
     $('#sortByPriority').click(function()
     {
+          
             sortByPriority(fetchedData)
     })
 
     $('#sortByStatus').click(function()
     {
+           
             sortByStatus(fetchedData)
     })
 
     $('#sortBydateL').click(function()
     {
+            
             sortByNewer(fetchedData)
     })
     $('#sortBydateO').click(function()
@@ -50,6 +52,7 @@ $(function(){
     {
         let id=$("#search")
        let taskList=$('#taskList')
+       console.log(id.val())
         fetchTaskById(id.val(),function(task)
         {   
             taskList.empty()
@@ -59,10 +62,25 @@ $(function(){
 
     })
     
+
+    $('#searchNotesId').click(function()
+    {
+       let id=$("#search")
+       let taskList=$('#taskList')
+       taskList.empty()
+       fetchNotesById(id.val(),function(task)
+        {   
+            
+            taskList.append(showNewTask(task))
+            
+        })
+
+    })
+    
+    // Default Date Feature
     var currentdate = new Date();
     currentdate.setDate(currentdate.getDate() + 1);
     var tomorrow = currentdate.toJSON().slice(0,10);
-    console.log(tomorrow)
     document.getElementById('date').value = tomorrow
 
    

@@ -1,11 +1,12 @@
 $(function(){
 
+   
     
     let newTask=$('#newTask')
     let description=$('#description')
     let date=$('#date')
     let status=$('#status')
-    let priority=$('#priority')
+    let priority= $('#priority')
     let taskList=$('#taskList')
     var fetchedData
     
@@ -53,11 +54,17 @@ $(function(){
         {   
             taskList.empty()
             taskList.append(showNewTask(task))
-           
+            
         })
 
     })
+    
+    var currentdate = new Date();
+    currentdate.setDate(currentdate.getDate() + 1);
+    var tomorrow = currentdate.toJSON().slice(0,10);
+    console.log(tomorrow)
+    document.getElementById('date').value = tomorrow
 
-
+   
 }) 
 

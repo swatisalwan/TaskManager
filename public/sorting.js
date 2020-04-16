@@ -1,22 +1,3 @@
-function sortByPriority(fetchedData)
-{
-    let taskList=$('#taskList')
-    fetchedData.sort(function(a,b)
-    {
-      
-      taskList.empty()
-      apriority=a.priority.toLowerCase()
-      bpriority=b.priority.toLowerCase()
-      return ((apriority=='high') ? 1 : (bpriority=='high') ? -1 : 0);
-       
-    })
-    for(task of fetchedData)
-    {
-          taskList.append(showNewTask(task))
-    }
-    
-   
-} 
 
 function sortById(fetchedData)
 {
@@ -40,6 +21,37 @@ function sortByStatus(fetchedData)
       astatus=a.status.toLowerCase()
       bstatus=b.status.toLowerCase()
       return ((astatus=='incomplete') ? -1 : (bstatus=='incomplete') ? 1 : 0);
+       
+    })
+    taskList.empty()
+    for(task of fetchedData)
+    {
+          taskList.append(showNewTask(task))
+    }
+    
+   
+} 
+
+function sortByPriority(fetchedData)
+{
+    let taskList=$('#taskList')
+    fetchedData.sort(function(a,b)
+        {
+          
+       taskList.empty()
+         apriority=a.priority.toLowerCase()
+       bpriority=b.priority.toLowerCase()
+       return ((apriority=='high') ? 1 : (bpriority=='high') ? -1 : 0);
+           
+         })
+    fetchedData.sort(function(a,b)
+    {
+      
+      
+      astatus=a.status.toLowerCase()
+      bstatus=b.status.toLowerCase()
+     
+      return ((astatus=='medium' && bstatus=='low') ? 1 : (bstatus=='medium' && astatus=='low')  ? -1 : 0);
        
     })
     taskList.empty()

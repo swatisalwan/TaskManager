@@ -1,6 +1,9 @@
 {
   "name": "taskmanager",
   "version": "1.0.0",
+  "engines": {
+    "node": "12.16.1"
+  },
   "description": "",
   "main": "server.js",
   "dependencies": {
@@ -15,6 +18,7 @@
     "sqlite3": "^4.1.1"
   },
   "devDependencies": {},
+ 
   "scripts": {
     "start": "node server.js"
   },

@@ -7,4 +7,4 @@ server.use(express.urlencoded({extended:true}))
 server.use('/',require('./routes').route)
 
 
-app.listen(process.env.PORT||8000)
+server.listen(process.env.PORT||8000)
